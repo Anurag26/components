@@ -25,6 +25,8 @@ dependencies:
   font_awesome_flutter: ^8.2.0
   flutter_auth_buttons: ^0.5.0
   rxdart: 0.20.0
+  firebase_database: 3.0.0
+  cached_network_image: 1.1.1
 
 
   #The following adds the Cupertino Icons font to your application.
@@ -55,6 +57,8 @@ flutter:
     - icons/facebook.png
     - icons/google.png
     - icons/twitter.png
+    - images/testFood.jpg
+    - images/cooking.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -68,12 +72,14 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Black.ttf
+        - asset: fonts/Roboto-Thin.ttf
+          weight: 300
+#        - asset: fonts/Schyler-Italic.ttf
+#          style: italic
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

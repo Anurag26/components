@@ -1,9 +1,36 @@
 import 'package:flutter/material.dart';
 import 'package:components/authentication/sign_in.dart';
 import 'package:components/main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+void main() => runApp(new YourApp());
+FirebaseUser user;   //is global because i can use it in main.dart
+class YourApp extends StatelessWidget{
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+      home:
+      FutureBuilder<FirebaseUser>(
+    future: FirebaseAuth.instance.currentUser(),
+    builder: (BuildContext context, AsyncSnapshot<FirebaseUser> snapshot){
+    if (snapshot.hasData){
+     user = snapshot.data; // this is your user instance
+    print('User available as');
+    /// is because there is user already logged
+    return FirstScreen();
+    }
+    /// other way there is no user logged.
+    return LoginPage();
+    }
+    )
+      );
 
 
-void main() => runApp(new LoginPage());
+  }
+}
+
 
 class LoginPage extends StatefulWidget{
   @override
@@ -11,15 +38,14 @@ class LoginPage extends StatefulWidget{
 
 }
 
-
 class _LoginPageState extends State<LoginPage>{
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
-    return new MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: new GoogleLogin(),
+    return new Scaffold(
+//      debugShowCheckedModeBanner: false,
+      body: new GoogleLogin(),
     );
 
   }
